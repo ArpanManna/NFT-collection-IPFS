@@ -13,6 +13,7 @@ export default function Home() {
   const web3ModalRef = useRef()
   const [accountAddress, setAccountAddress] = useState(undefined)
   const [loading, setLoading] = useState(false)
+  const [nftData, setNftData] = useState([])
 
   useEffect(() => {
     if(!walletConnected) {
@@ -123,6 +124,7 @@ export default function Home() {
             console.log(output["name"])
             console.log(output["description"])
             console.log(output["image"])
+            setNftData((nftData) => [...nftData, output])
         }).catch(err => console.error(err));
     }catch(error){
       console.log(error)
@@ -133,6 +135,7 @@ export default function Home() {
     for (let id = 1; id <= tokenMinted; id++){
       console.log(id)
       tokenURI(id);
+      console.log('nftData', nftData)
     }
   };
 
@@ -147,26 +150,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
      <div className={styles.main}>
-     <div>
+       <div>
         <img className={styles.image} src="./home.jpeg" />
       </div>
-       <div>
-        <h1 className={styles.title}>Welcome to VI Punks!</h1>
-        <div className={styles.description}>
-          Its a unique collection of {totalSupply} VI NFTs 
-        </div>
-        <div className={styles.description}>
-         {tokenMinted}/{totalSupply} NFTs have been minted
-        </div>
-        {renderConnectButton()}
-        {renderMint()}
-        <button onClick={getURI}>TokenURI</button>
-      </div>
       <div>
-        Minted NFT details
+      <h1 className={styles.title}>Welcome to VI Punks!</h1>
+      <div className={styles.description}>
+        Its a unique collection of {totalSupply} VI NFTs 
       </div>
-      
-      
+      <div className={styles.description}>
+        {tokenMinted}/{totalSupply} NFTs have been minted
+      </div>
+      {renderConnectButton()}
+      {renderMint()}
+    </div>
+      <div>
+        <button onClick={getURI} className={styles.button}>TokenURI</button>
+        Minted NFT details
+      </div> 
      </div>
       
       <footer className={styles.footer}>
