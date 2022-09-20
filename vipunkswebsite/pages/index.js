@@ -149,26 +149,41 @@ export default function Home() {
         <meta name="description" content="VI punks Dapp" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
      <div className={styles.main}>
-       <div>
-        <img className={styles.image} src="./home.jpeg" />
-      </div>
-      <div>
-      <h1 className={styles.title}>Welcome to VI Punks!</h1>
-      <div className={styles.description}>
-        Its a unique collection of {totalSupply} VI NFTs 
-      </div>
-      <div className={styles.description}>
-        {tokenMinted}/{totalSupply} NFTs have been minted
-      </div>
-      {renderConnectButton()}
-      {renderMint()}
-    </div>
-      <div>
-        <button onClick={getURI} className={styles.button}>TokenURI</button>
-        Minted NFT details
-      </div> 
+      <div className={styles.grid}>
+        <div className={styles.renderConnect}>
+          {renderConnectButton()}
+        </div>
      </div>
+      <div className={styles.grid}>
+        <div className={styles.image}>
+            <img className={styles.image} src="./home.jpeg" />
+        </div>
+      </div>
+      <div className={styles.grid}>
+        <div className={styles.textItems}>
+            <h1>Welcome to VI Punks!</h1>
+            {/* <div className={styles.description}> */}
+              <p>Its a unique collection of {totalSupply} VI NFTs </p>
+            {/* </div> */}
+            {/* <div className={styles.description}>  className={styles.title}*/}
+              <p>{tokenMinted}/{totalSupply} NFTs have been minted </p>
+            {/* </div> */}
+            <div className={styles.renderMint}>
+              {renderMint()}
+            </div>
+            <p>Minted NFT details</p>
+            <button onClick={getURI} className={styles.button}>TokenURI</button>
+        </div>
+      </div>
+
+      <div>
+        {/* {nftData} */}
+      </div>
+
+     </div>
+       
       
       <footer className={styles.footer}>
         Made with &#10084; by Veritas Interactive
